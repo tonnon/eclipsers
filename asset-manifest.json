@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/eclipsers/static/css/main.cf7b20e7.chunk.css",
+    "main.js": "/eclipsers/static/js/main.6dfafeb2.chunk.js",
+    "main.js.map": "/eclipsers/static/js/main.6dfafeb2.chunk.js.map",
+    "runtime-main.js": "/eclipsers/static/js/runtime-main.6f855ada.js",
+    "runtime-main.js.map": "/eclipsers/static/js/runtime-main.6f855ada.js.map",
+    "static/js/2.44e5f72c.chunk.js": "/eclipsers/static/js/2.44e5f72c.chunk.js",
+    "static/js/2.44e5f72c.chunk.js.map": "/eclipsers/static/js/2.44e5f72c.chunk.js.map",
+    "index.html": "/eclipsers/index.html",
+    "static/css/main.cf7b20e7.chunk.css.map": "/eclipsers/static/css/main.cf7b20e7.chunk.css.map",
+    "static/js/2.44e5f72c.chunk.js.LICENSE.txt": "/eclipsers/static/js/2.44e5f72c.chunk.js.LICENSE.txt",
+    "static/media/logo.72b62234.png": "/eclipsers/static/media/logo.72b62234.png",
+    "static/media/video.a8b115dd.mp4": "/eclipsers/static/media/video.a8b115dd.mp4"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.6f855ada.js",
+    "static/js/2.44e5f72c.chunk.js",
+    "static/css/main.cf7b20e7.chunk.css",
+    "static/js/main.6dfafeb2.chunk.js"
+  ]
+}
