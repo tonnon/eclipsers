@@ -1,0 +1,17 @@
+#div-navbar {
+    position: relative;
+    z-index: 99999;
+    padding: 30px;
+    width: 100%;
+}
+
+.flex {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+span {
+    color: #FFF;
+    font-weight: 500;
+}

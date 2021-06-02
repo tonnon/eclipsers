@@ -1,0 +1,17 @@
+video {
+    position: absolute;
+    width: 100%;
+    top: -52px;
+    left: 0;
+}
+
+
+@media screen and (min-width: 320px) and (max-width: 1050px) {
+    body {
+        background-color: black;
+    }
+
+    video {
+        height: 100%;
+    }
+}
