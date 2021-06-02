@@ -1,6 +1,6 @@
 {
   "name": "eclipsers",
-  "homepage": "./",
+  "homepage": "./build/static/index.html",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
