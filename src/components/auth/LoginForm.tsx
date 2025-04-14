@@ -51,7 +51,7 @@ const LoginForm: React.FC<LoginFormProps> = ({
         togglePassword={toggleShowPassword}
       />
       
-      <div className="flex items-center space-x-2 my-2">
+      <div className="relative  z-[1000px]  flex items-center space-x-2 my-2">
         <Checkbox id="remember" />
         <label
           htmlFor="remember"

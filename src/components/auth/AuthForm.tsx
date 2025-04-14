@@ -41,7 +41,7 @@ const AuthForm: React.FC = () => {
         )}
       </form>
       
-      <div className="mt-6 text-center text-sm">
+      <div className="relative  z-[1000px]  mt-6 text-center text-sm">
         <p className="text-eclipse-300">
           {mode === 'login' ? "Don't have an account? " : "Already have an account? "}
           <button
