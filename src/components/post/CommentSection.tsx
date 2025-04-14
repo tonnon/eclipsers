@@ -331,7 +331,7 @@ const CommentSection: React.FC<CommentSectionProps> = ({ postId }) => {
           placeholder="Add a comment..." 
           value={newComment}
           onChange={(e) => setNewComment(e.target.value)}
-          className="border-0 focus-visible:ring-0 flex-1"
+          className="border-0 focus-visible:ring-0 flex-1 text-white"
           onKeyDown={(e) => {
             if (e.key === 'Enter') {
               handleAddComment();

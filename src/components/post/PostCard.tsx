@@ -83,7 +83,7 @@ const PostCard: React.FC<PostCardProps> = ({ post }) => {
       
       {/* Post actions */}
       <div className="p-4 flex items-center justify-between">
-        <div className="flex items-center space-x-4">
+        <div className="flex items-center space-x-6">
           <Button 
             variant="ghost" 
             size="icon" 
@@ -102,9 +102,6 @@ const PostCard: React.FC<PostCardProps> = ({ post }) => {
               <span className="ml-1">{post.comments}</span>
             </Button>
           </Link>
-          <Button variant="ghost" size="icon" className="hover:bg-transparent text-eclipse-300 hover:text-white">
-            <Share size={22} />
-          </Button>
         </div>
       </div>
       

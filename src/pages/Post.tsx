@@ -18,7 +18,7 @@ const posts = [
       name: 'Alex Stargazer',
       avatar: 'https://i.pravatar.cc/150?img=3',
     },
-    image: 'https://images.unsplash.com/photo-1532187643603-ba119ca4109e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
+    image: 'https://images.unsplash.com/photo-1579978683768-d0f4e8a7c7fc?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
     caption: 'Total solar eclipse captured from Oregon. Truly a breathtaking moment when the diamond ring effect appeared! #SolarEclipse #Oregon #Astronomy',
     location: {
       name: 'Oregon, United States',
@@ -72,7 +72,7 @@ const posts = [
       name: 'Luna Eclipse',
       avatar: 'https://i.pravatar.cc/150?img=9',
     },
-    image: 'https://images.unsplash.com/photo-1526186616836-56d1a1da98c5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
+    image: 'https://images.unsplash.com/photo-1613174495872-c4718057500d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
     caption: "Caught the ISS transiting during yesterday's eclipse! Years of planning for this 0.8 second moment. Worth every second of preparation! #ISS #Transit #SolarEclipse #Astrophotography",
     location: {
       name: 'Toronto, Canada',
@@ -90,7 +90,7 @@ const posts = [
       name: 'Stella Nova',
       avatar: 'https://i.pravatar.cc/150?img=11',
     },
-    image: 'https://images.unsplash.com/photo-1600267204016-88cf876b91db?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
+    image: 'https://images.unsplash.com/photo-1605776502818-8d2103f63a25?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
     caption: "First attempt at capturing a lunar eclipse with my new telescope! The details of the moon's surface during totality were breathtaking. #LunarEclipse #BloodMoon #Astronomy #FirstLight",
     location: {
       name: 'Denver, USA',
@@ -204,7 +204,7 @@ const Post = () => {
         </div>
         
         {/* Post details and comments section */}
-        <div className={`${isMobile ? 'w-full' : 'w-5/12'} bg-white flex flex-col h-[80vh]`}>
+        <div className={`${isMobile ? 'w-full' : 'w-5/12'} bg-eclipse-900 flex flex-col h-[80vh]`}>
           {/* Post header */}
           <div className="p-4 border-b flex items-center justify-between">
             <div className="flex items-center space-x-3">
@@ -224,20 +224,20 @@ const Post = () => {
           
           {/* Post actions */}
           <div className="p-4 border-b flex items-center">
-            <div className="flex items-center space-x-4">
+            <div className="flex items-center space-x-8">
               <Button 
                 variant="ghost" 
                 size="icon" 
                 onClick={handleLike}
                 className={cn(
-                  "text-eclipse-300 hover:text-eclipse-orange transition-colors flex items-center", 
+                  "hover:bg-transparent text-eclipse-300 hover:text-eclipse-orange transition-colors flex items-center", 
                   liked && "text-eclipse-orange"
                 )}
               >
                 <Heart size={22} fill={liked ? "currentColor" : "none"} />
                 <span className="ml-1 font-medium">{likeCount}</span>
               </Button>
-              <Button variant="ghost" size="icon" className="text-eclipse-300 hover:text-eclipse-blue flex items-center">
+              <Button variant="ghost" size="icon" className="hover:bg-transparent text-eclipse-300 hover:text-eclipse-blue flex items-center">
                 <MessageSquare size={22} />
                 <span className="ml-1 font-medium">{post.comments}</span>
               </Button>
