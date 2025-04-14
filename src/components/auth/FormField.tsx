@@ -44,7 +44,7 @@ const FormField: React.FC<FormFieldProps> = ({
           value={value}
           onChange={onChange}
           required={required}
-          className="bg-eclipse-700/50 border-eclipse-600 pl-10 placeholder:text-eclipse-500"
+          className="bg-eclipse-700/50 border-eclipse-600 pl-10 text-white placeholder:text-eclipse-500"
         />
         {togglePassword && (
           <button

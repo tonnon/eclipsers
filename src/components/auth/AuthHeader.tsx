@@ -17,7 +17,7 @@ const AuthHeader: React.FC<AuthHeaderProps> = ({ mode }) => {
         <p className="text-eclipse-300 mt-2">Share your celestial moments</p>
       </div>
       
-      <h2 className="text-2xl font-display font-semibold mb-6 text-center">
+      <h2 className="text-2xl font-display font-bold bg-gradient-to-r from-white to-eclipse-200 bg-clip-text text-transparent mb-6 text-center">
         {mode === 'login' ? 'Sign In' : 'Create Account'}
       </h2>
     </>
