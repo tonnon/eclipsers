@@ -1,0 +1,118 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 255 255 255;
+    --foreground: 20 14.3% 4.1%;
+    
+    --card: 0 0% 100%;
+    --card-foreground: 20 14.3% 4.1%;
+    
+    --popover: 0 0% 100%;
+    --popover-foreground: 20 14.3% 4.1%;
+    
+    --primary: 252 84.5% 67.8%;
+    --primary-foreground: 355.7 100% 97.3%;
+    
+    --secondary: 60 4.8% 95.9%;
+    --secondary-foreground: 24 9.8% 10%;
+    
+    --muted: 60 4.8% 95.9%;
+    --muted-foreground: 25 5.3% 44.7%;
+    
+    --accent: 60 4.8% 95.9%;
+    --accent-foreground: 24 9.8% 10%;
+    
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 60 9.1% 97.8%;
+    
+    --border: 20 5.9% 90%;
+    --input: 20 5.9% 90%;
+    --ring: 252 84.5% 67.8%;
+    
+    --radius: 0.75rem;
+  }
+
+  .dark {
+    --background: 260 59% 7%;
+    --foreground: 60 9.1% 97.8%;
+    
+    --card: 260 50% 5%;
+    --card-foreground: 60 9.1% 97.8%;
+    
+    --popover: 260 45% 6%;
+    --popover-foreground: 60 9.1% 97.8%;
+    
+    --primary: 252 84.5% 67.8%;
+    --primary-foreground: 355.7 100% 97.3%;
+    
+    --secondary: 260 38% 15%;
+    --secondary-foreground: 60 9.1% 97.8%;
+    
+    --muted: 260 38% 15%;
+    --muted-foreground: 24 5.4% 63.9%;
+    
+    --accent: 260 38% 15%;
+    --accent-foreground: 60 9.1% 97.8%;
+    
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 60 9.1% 97.8%;
+    
+    --border: 260 38% 15%;
+    --input: 260 38% 15%;
+    --ring: 252 84.5% 67.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-eclipse-900 text-foreground;
+  }
+}
+
+@layer components {
+  .eclipse-card {
+    @apply bg-eclipse-800/80 backdrop-blur-md border border-eclipse-700/30 rounded-xl shadow-lg shadow-eclipse-700/10;
+  }
+
+  .eclipse-glow {
+    @apply relative before:absolute before:inset-0 before:bg-eclipse-glow before:opacity-75 before:rounded-xl;
+  }
+  
+  .nav-link {
+    @apply text-eclipse-200 hover:text-white transition-colors duration-200;
+  }
+  
+  .btn-primary {
+    @apply bg-eclipse-400 hover:bg-eclipse-500 text-white px-4 py-2 rounded-lg transition-colors duration-200 font-medium;
+  }
+  
+  .btn-secondary {
+    @apply bg-eclipse-700 hover:bg-eclipse-600 text-eclipse-200 px-4 py-2 rounded-lg transition-colors duration-200 font-medium;
+  }
+
+  .star {
+    @apply absolute rounded-full bg-white;
+  }
+}
+
+/* Starry background effect */
+.stars-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+}
