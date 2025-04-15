@@ -65,9 +65,6 @@ const PostCard: React.FC<PostCardProps> = ({ post }) => {
             )}
           </div>
         </div>
-        <Button variant="ghost" size="icon" className="text-eclipse-300">
-          <MoreHorizontal size={18} />
-        </Button>
       </div>
       
       {/* Post image - now links to post details */}

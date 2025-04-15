@@ -119,7 +119,7 @@ const MapPage: React.FC = () => {
       location: 'Oregon, USA',
       coordinates: [-122.6784, 45.5152],
       date: 'April 8, 2024',
-      image: 'https://images.unsplash.com/photo-1532187643603-ba119ca4109e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80'
+      image: 'https://images.unsplash.com/photo-1579978683768-d0f4e8a7c7fc?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
     },
     {
       id: 2,
@@ -127,7 +127,7 @@ const MapPage: React.FC = () => {
       location: 'Madrid, Spain',
       coordinates: [-3.7038, 40.4168],
       date: 'March 25, 2024',
-      image: 'https://images.unsplash.com/photo-1464802686167-b939a6910659?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80'
+      image: 'https://images.unsplash.com/photo-1518066000714-58c45f1a2c0a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
     },
     {
       id: 3,
@@ -135,7 +135,7 @@ const MapPage: React.FC = () => {
       location: 'Melbourne, Australia',
       coordinates: [144.9631, -37.8136],
       date: 'April 2, 2024',
-      image: 'https://images.unsplash.com/photo-1518066000714-58c45f1a2c0a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80'
+      image: 'https://images.unsplash.com/photo-1464802686167-b939a6910659?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
     },
     {
       id: 4,
@@ -143,7 +143,7 @@ const MapPage: React.FC = () => {
       location: 'Toronto, Canada',
       coordinates: [-79.3832, 43.6532],
       date: 'April 5, 2024',
-      image: 'https://images.unsplash.com/photo-1526186616836-56d1a1da98c5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80'
+      image: 'https://images.unsplash.com/photo-1613174495872-c4718057500d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
     },
   ];
 
