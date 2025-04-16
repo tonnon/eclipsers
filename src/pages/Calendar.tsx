@@ -23,7 +23,7 @@ const eclipseEvents = [
     visibility: ['Southern South America', 'South Pacific', 'Antarctica'],
     duration: '1h 43m',
     description: 'A total solar eclipse occurs when the Moon completely blocks the Sun.',
-    image: 'https://images.unsplash.com/photo-1532187643603-ba119ca4109e?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80',
+    image: 'https://images.unsplash.com/photo-1613174495872-c4718057500d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
   },
   {
     id: 2,
@@ -33,7 +33,7 @@ const eclipseEvents = [
     visibility: ['North & South America', 'Africa', 'Europe'],
     duration: '2h 18m',
     description: 'A partial lunar eclipse occurs when the Earth moves between the Sun and Moon but they are not perfectly aligned.',
-    image: 'https://images.unsplash.com/photo-1518066000714-58c45f1a2c0a?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80',
+    image: 'https://images.unsplash.com/photo-1605776502818-8d2103f63a25?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
   },
   {
     id: 3,
@@ -43,7 +43,7 @@ const eclipseEvents = [
     visibility: ['Pacific & Indian Ocean', 'Southeast Asia', 'Australia'],
     duration: '1h 22m',
     description: 'An annular solar eclipse happens when the Moon passes between the Sun and Earth but is too far from Earth to completely block the Sun.',
-    image: 'https://images.unsplash.com/photo-1620649332832-45f944292179?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80',
+    image: 'https://images.unsplash.com/photo-1608178398319-48f814d0750c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
   },
 ];
 
@@ -135,19 +135,19 @@ const CalendarPage: React.FC = () => {
                             {event.type === 'solar' ? 'Solar' : 'Lunar'}
                           </Badge>
                         </div>
-                        <p className="text-sm text-eclipse-300 mb-1">
+                        <p className="text-sm text-white-300 mb-1">
                           {event.date.toLocaleDateString('en-US', {
                             day: 'numeric',
                             month: 'long',
                             year: 'numeric'
                           })} • Duration: {event.duration}
                         </p>
-                        <p className="text-xs text-eclipse-400">
+                        <p className="text-xs text-white-400">
                           Visible in {event.visibility.join(', ')}
                         </p>
                       </div>
                       <div className="flex items-center">
-                        <Button variant="outline" size="sm">
+                        <Button variant="default" size="sm">
                           Details
                         </Button>
                       </div>
@@ -189,7 +189,7 @@ const CalendarPage: React.FC = () => {
                 />
               </div>
               <div className="space-y-2">
-                <p className="text-eclipse-100">{selectedEvent.description}</p>
+                <p className="text-eclipse-500">{selectedEvent.description}</p>
                 <p className="text-sm text-eclipse-300">
                   <strong>Duration:</strong> {selectedEvent.duration}
                 </p>
@@ -200,7 +200,7 @@ const CalendarPage: React.FC = () => {
             </div>
             <div className="space-y-4">
               <h3 className="font-medium">Photographer Tips</h3>
-              <div className="space-y-2 text-sm text-eclipse-100">
+              <div className="space-y-2 text-sm text-eclipse-500">
                 <p>• Use a proper solar filter for solar eclipses</p>
                 <p>• Set up your equipment well in advance</p>
                 <p>• Use a tripod for stability</p>
@@ -210,7 +210,7 @@ const CalendarPage: React.FC = () => {
               </div>
               <div className="pt-4 space-x-3">
                 <Button>Set Reminder</Button>
-                <Button variant="outline">Share Event</Button>
+                <Button>Share Event</Button>
               </div>
             </div>
           </div>
