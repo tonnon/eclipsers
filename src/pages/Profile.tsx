@@ -31,32 +31,32 @@ const mockUserProfile = {
 const userPosts = [
   {
     id: '1',
-    image: 'https://images.unsplash.com/photo-1532187643603-ba119ca4109e?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80',
+    image: 'https://images.unsplash.com/photo-1579978683768-d0f4e8a7c7fc?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
     likes: 284
   },
   {
     id: '2',
-    image: 'https://images.unsplash.com/photo-1464802686167-b939a6910659?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80',
+    image: 'https://images.unsplash.com/photo-1518066000714-58c45f1a2c0a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
     likes: 156
   },
   {
     id: '3',
-    image: 'https://images.unsplash.com/photo-1518066000714-58c45f1a2c0a?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80',
+    image: 'https://images.unsplash.com/photo-1464802686167-b939a6910659?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
     likes: 428
   },
   {
     id: '4',
-    image: 'https://images.unsplash.com/photo-1620649332832-45f944292179?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80',
+    image: 'https://images.unsplash.com/photo-1613174495872-c4718057500d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
     likes: 189
   },
   {
     id: '5',
-    image: 'https://images.unsplash.com/photo-1543722530-d2c3201371e7?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80',
+    image: 'https://images.unsplash.com/photo-1605776502818-8d2103f63a25?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
     likes: 312
   },
   {
     id: '6',
-    image: 'https://images.unsplash.com/photo-1548087513-21c42a3bf468?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80',
+    image: 'https://images.unsplash.com/photo-1608178398319-48f814d0750c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
     likes: 247
   }
 ];
@@ -176,7 +176,7 @@ const Profile: React.FC = () => {
                 {isCurrentUserProfile ? (
                   <Button 
                     onClick={handleEditProfile}
-                    variant="outline"
+                    variant="secondary"
                     className="border-eclipse-400 text-eclipse-400"
                   >
                     <Edit size={18} className="mr-2" />

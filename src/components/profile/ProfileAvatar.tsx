@@ -67,7 +67,7 @@ const ProfileAvatar: React.FC<ProfileAvatarProps> = ({
         )}
       </Avatar>
       <Button 
-        variant="outline" 
+        variant="default" 
         onClick={handleButtonClick}
         className="flex items-center"
       >

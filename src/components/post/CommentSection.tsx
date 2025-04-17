@@ -265,7 +265,7 @@ const CommentSection: React.FC<CommentSectionProps> = ({ postId }) => {
                           <AvatarFallback>{reply.author.name.charAt(0)}</AvatarFallback>
                         </Avatar>
                         <div>
-                          <div className="flex items-start">
+                          <div className="flex items-center">
                             <span className="font-medium mr-2 text-sm">{reply.author.name}</span>
                             <span className="text-xs text-eclipse-100">{reply.content}</span>
                           </div>

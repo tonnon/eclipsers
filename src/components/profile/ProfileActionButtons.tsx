@@ -16,7 +16,7 @@ const ProfileActionButtons: React.FC<ProfileActionButtonsProps> = ({
   return (
     <div className="flex justify-end space-x-3">
       <Button 
-        variant="outline" 
+        variant="destructive" 
         onClick={onCancel}
       >
         Cancel
