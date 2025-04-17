@@ -2,8 +2,6 @@
 
 **Eclipsers** is a modern and responsive social network designed for eclipse enthusiasts from around the globe. Whether you're chasing solar or lunar eclipses, this platform lets you share your sightings, connect with others, and never miss a celestial event again.
 
-![Eclipsers Banner](./assets/eclipsers-banner.png)
-
 ## 🚀 Features
 
 - 🧑‍🚀 User profiles and authentication  
