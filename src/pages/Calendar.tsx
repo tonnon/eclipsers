@@ -12,40 +12,7 @@ import {
 import { Button } from '@/components/ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Badge } from '@/components/ui/badge';
-
-// Sample eclipse data
-const eclipseEvents = [
-  {
-    id: 1,
-    title: 'Total Solar Eclipse',
-    date: new Date(2024, 9, 2), // October 2, 2024
-    type: 'solar',
-    visibility: ['Southern South America', 'South Pacific', 'Antarctica'],
-    duration: '1h 43m',
-    description: 'A total solar eclipse occurs when the Moon completely blocks the Sun.',
-    image: 'https://images.unsplash.com/photo-1613174495872-c4718057500d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
-  },
-  {
-    id: 2,
-    title: 'Partial Lunar Eclipse',
-    date: new Date(2024, 8, 18), // September 18, 2024
-    type: 'lunar',
-    visibility: ['North & South America', 'Africa', 'Europe'],
-    duration: '2h 18m',
-    description: 'A partial lunar eclipse occurs when the Earth moves between the Sun and Moon but they are not perfectly aligned.',
-    image: 'https://images.unsplash.com/photo-1605776502818-8d2103f63a25?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
-  },
-  {
-    id: 3,
-    title: 'Annular Solar Eclipse',
-    date: new Date(2024, 3, 20), // April 20, 2025
-    type: 'solar',
-    visibility: ['Pacific & Indian Ocean', 'Southeast Asia', 'Australia'],
-    duration: '1h 22m',
-    description: 'An annular solar eclipse happens when the Moon passes between the Sun and Earth but is too far from Earth to completely block the Sun.',
-    image: 'https://images.unsplash.com/photo-1608178398319-48f814d0750c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
-  },
-];
+import { eclipseEvents } from '@/data';
 
 const CalendarPage: React.FC = () => {
   const [date, setDate] = useState<Date | undefined>(new Date());

@@ -58,13 +58,10 @@ const ProfileAvatar: React.FC<ProfileAvatarProps> = ({
   return (
     <div className="flex flex-col items-center space-y-4">
       <Avatar className="h-24 w-24 border-4 border-eclipse-700">
-        {avatarUrl ? (
-          <AvatarImage src={avatarUrl} alt={`${name || username}'s avatar`} />
-        ) : (
-          <AvatarFallback className="bg-eclipse-600 text-lg">
-            {name?.charAt(0) || username?.charAt(0) || '?'}
-          </AvatarFallback>
-        )}
+        <AvatarImage src={avatarUrl || '/guest-avatar.svg'} alt={`${name || username}'s avatar`} />
+        <AvatarFallback className="bg-eclipse-600 text-lg">
+          {name?.charAt(0) || username?.charAt(0) || '?'}
+        </AvatarFallback>
       </Avatar>
       <Button 
         variant="default" 

@@ -23,7 +23,6 @@ import {
 } from '@/components/ui/dropdown-menu';
 import Logo from '@/components/common/Logo';
 import { useIsMobile } from '@/hooks/use-mobile';
-import { supabase } from '@/integrations/supabase/client';
 import { toast } from 'sonner';
 
 const Navbar: React.FC = () => {
@@ -34,67 +33,36 @@ const Navbar: React.FC = () => {
   const [userName, setUserName] = useState<string>('');
   const [userInitials, setUserInitials] = useState<string>('');
 
+  const DEFAULT_AVATAR = '/guest-avatar.svg';
+
   useEffect(() => {
-    fetchUserProfile();
-
-    // Listen to storage changes for avatar updates
-    const { data: authListener } = supabase.auth.onAuthStateChange((event) => {
-      if (event === 'SIGNED_IN') {
-        fetchUserProfile();
-      } else if (event === 'SIGNED_OUT') {
-        setAvatarUrl(null);
-        setUserName('');
-        setUserInitials('');
-      }
-    });
-
-    return () => {
-      authListener?.subscription.unsubscribe();
-    };
+    // Mock: fetch user profile from local storage or default
+    const stored = localStorage.getItem('mockUser');
+    if (stored) {
+      const user = JSON.parse(stored);
+      setAvatarUrl(user.avatar_url || DEFAULT_AVATAR);
+      const displayName = user.name || user.username || '';
+      setUserName(displayName);
+      const initials = displayName
+        .split(' ')
+        .map((n: string) => n[0])
+        .join('')
+        .toUpperCase()
+        .substring(0, 2);
+      setUserInitials(initials || 'US');
+    } else {
+      setUserName('Guest User');
+      setUserInitials('GU');
+      setAvatarUrl(DEFAULT_AVATAR);
+    }
   }, []);
 
-  const fetchUserProfile = async () => {
-    try {
-      const { data: { session } } = await supabase.auth.getSession();
-      
-      if (!session) return;
-
-      // Fetch current user's profile data
-      const { data } = await supabase
-        .from('profiles')
-        .select('name, username, avatar_url')
-        .eq('id', session.user.id)
-        .maybeSingle();
-      
-      if (data) {
-        setAvatarUrl(data.avatar_url);
-        const displayName = data.name || data.username || '';
-        setUserName(displayName);
-        
-        // Get initials for avatar fallback
-        const initials = displayName
-          .split(' ')
-          .map(name => name[0])
-          .join('')
-          .toUpperCase()
-          .substring(0, 2);
-          
-        setUserInitials(initials || session.user.email?.substring(0, 2).toUpperCase() || 'U');
-      }
-    } catch (error) {
-      console.error('Error fetching user profile:', error);
-    }
-  };
+  const fetchUserProfile = async () => {};
 
   const handleLogout = async () => {
-    try {
-      await supabase.auth.signOut();
-      toast.success('Logged out successfully');
-      navigate('/auth');
-    } catch (error) {
-      console.error('Error logging out:', error);
-      toast.error('Failed to log out');
-    }
+    localStorage.removeItem('mockUser');
+    toast.success('Logged out');
+    navigate('/');
   };
 
   return (
@@ -148,13 +116,27 @@ const Navbar: React.FC = () => {
                       <Link to="/profile">Profile</Link>
                     </DropdownMenuItem>
                     <DropdownMenuSeparator className="bg-eclipse-700" />
-                    <DropdownMenuItem 
-                      onClick={handleLogout}
-                      className="text-eclipse-200 focus:bg-eclipse-700 focus:text-white cursor-pointer"
-                    >
-                      <LogOut className="mr-2 h-4 w-4" />
-                      <span>Log out</span>
-                    </DropdownMenuItem>
+                    {!userName || userName === 'Guest' || userName === 'Guest User' ? (
+                      <DropdownMenuItem className="text-eclipse-200 focus:bg-eclipse-700 focus:text-white cursor-pointer"
+                        onClick={() => {
+                          const mockUser = { id: 'mock-user-id', email: 'guest@example.com', name: 'Guest User', username: 'guest_user', avatar_url: DEFAULT_AVATAR };
+                          localStorage.setItem('mockUser', JSON.stringify(mockUser));
+                          toast.success('Mock sign-in');
+                          window.location.reload();
+                        }}
+                      >
+                        <User className="mr-2 h-4 w-4" />
+                        <span>Mock Sign In</span>
+                      </DropdownMenuItem>
+                    ) : (
+                      <DropdownMenuItem 
+                        onClick={handleLogout}
+                        className="text-eclipse-200 focus:bg-eclipse-700 focus:text-white cursor-pointer"
+                      >
+                        <LogOut className="mr-2 h-4 w-4" />
+                        <span>Log out</span>
+                      </DropdownMenuItem>
+                    )}
                   </DropdownMenuContent>
                 </DropdownMenu>
               </>
@@ -227,12 +209,26 @@ const Navbar: React.FC = () => {
               </Avatar>
               <div className="flex flex-col">
                 <span className="text-sm text-white font-medium">{userName || 'User'}</span>
-                <button 
-                  className="text-left text-xs text-eclipse-400 hover:text-eclipse-300"
-                  onClick={handleLogout}
-                >
-                  Log out
-                </button>
+                {(!userName || userName === 'Guest' || userName === 'Guest User') ? (
+                  <button 
+                    className="text-left text-xs text-eclipse-400 hover:text-eclipse-300"
+                    onClick={() => {
+                      const mockUser = { id: 'mock-user-id', email: 'guest@example.com', name: 'Guest User', username: 'guest_user', avatar_url: DEFAULT_AVATAR };
+                      localStorage.setItem('mockUser', JSON.stringify(mockUser));
+                      toast.success('Mock sign-in');
+                      window.location.reload();
+                    }}
+                  >
+                    Mock Sign In
+                  </button>
+                ) : (
+                  <button 
+                    className="text-left text-xs text-eclipse-400 hover:text-eclipse-300"
+                    onClick={handleLogout}
+                  >
+                    Log out
+                  </button>
+                )}
               </div>
             </div>
           </div>

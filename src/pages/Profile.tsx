@@ -6,7 +6,6 @@ import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Button } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
 import { Grid, Camera, Users, Settings, MapPin, Calendar, Link as LinkIcon, Edit } from 'lucide-react';
-import { supabase } from '@/integrations/supabase/client';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'sonner';
 
@@ -70,57 +69,66 @@ const Profile: React.FC = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   
+  const DEFAULT_AVATAR = '/guest-avatar.svg';
+
   useEffect(() => {
-    const fetchCurrentUser = async () => {
-      const { data: { session } } = await supabase.auth.getSession();
-      
-      if (!session) {
-        navigate('/auth');
-        return;
-      }
-      
-      setCurrentUser(session.user);
-      
-      // If no ID is provided in the URL, or ID matches current user, show current user profile
-      if (!id || id === session.user.id) {
-        setIsCurrentUserProfile(true);
-        
-        // Fetch current user's profile data
-        const { data: profileData, error } = await supabase
-          .from('profiles')
-          .select('*')
-          .eq('id', session.user.id)
-          .single();
-          
-        if (error) {
-          toast.error("Error loading profile");
-          console.error("Error fetching profile:", error);
-          setProfileData({
-            id: session.user.id,
-            name: 'New User',
-            username: session.user.email?.split('@')[0] || 'newuser',
-            avatar_url: null,
-            bio: 'Tell others about yourself',
-            location: '',
-            website: '',
-            created_at: new Date().toISOString(),
-            followers: 0,
-            following: 0
-          });
-        } else {
-          setProfileData(profileData);
-        }
-      } else {
-        // Show another user's profile
-        setIsCurrentUserProfile(false);
-        // For now, use mock data
-        setProfileData(mockUserProfile);
-      }
-      
+    const stored = localStorage.getItem('mockUser');
+    if (!stored) {
+      // guest mode
+      setIsCurrentUserProfile(true);
+      setProfileData({
+        id: 'guest',
+        name: 'Guest User',
+        username: 'guest',
+        avatar_url: DEFAULT_AVATAR,
+        bio: 'Welcome to Eclipsers',
+        location: '',
+        website: '',
+        created_at: new Date().toISOString(),
+        followers: 0,
+        following: 0,
+      });
       setIsLoading(false);
-    };
-    
-    fetchCurrentUser();
+      return;
+    }
+    const user = JSON.parse(stored);
+    setCurrentUser(user);
+    if (!id || id === user.id) {
+      setIsCurrentUserProfile(true);
+      const storedProfile = localStorage.getItem('mockProfile');
+      if (storedProfile) {
+        const p = JSON.parse(storedProfile);
+        setProfileData({
+          id: user.id,
+          name: p.name || user.name,
+          username: p.username || user.username,
+          avatar_url: p.avatar_url || DEFAULT_AVATAR,
+          bio: p.bio || 'Tell others about yourself',
+          location: p.location || '',
+          website: p.website || '',
+          created_at: new Date().toISOString(),
+          followers: 0,
+          following: 0,
+        });
+      } else {
+        setProfileData({
+          id: user.id,
+          name: user.name,
+          username: user.username,
+          avatar_url: DEFAULT_AVATAR,
+          bio: 'Tell others about yourself',
+          location: '',
+          website: '',
+          created_at: new Date().toISOString(),
+          followers: 0,
+          following: 0,
+        });
+      }
+    } else {
+      setIsCurrentUserProfile(false);
+      setProfileData(mockUserProfile);
+    }
+    setIsLoading(false);
   }, [id, navigate]);
   
   const toggleFollow = () => {

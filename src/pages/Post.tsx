@@ -8,9 +8,10 @@ import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { ArrowLeft, Heart, MessageSquare } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { posts as postsData } from '@/data';
 
-// Mock data - in a real app, this would come from a database
-const posts = [
+// Mock data fallback (if needed)
+const postsFallback = [
   {
     id: '1',
     author: {
@@ -132,7 +133,8 @@ const Post = () => {
   
   useEffect(() => {
     // In a real app, this would be an API call
-    const foundPost = posts.find(p => p.id === id);
+    const source = (postsData as any[])?.length ? postsData : postsFallback;
+    const foundPost = source.find(p => p.id === id);
     if (foundPost) {
       setPost(foundPost);
       setLiked(foundPost.liked || false);

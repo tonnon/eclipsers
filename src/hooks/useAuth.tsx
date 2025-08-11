@@ -2,7 +2,6 @@
 import { useEffect, useState } from 'react';
 import { toast } from 'sonner';
 import { useNavigate } from 'react-router-dom';
-import { supabase } from '@/integrations/supabase/client';
 
 export const useAuth = () => {
   const [mode, setMode] = useState<'login' | 'register'>('login');
@@ -16,15 +15,9 @@ export const useAuth = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    // Check if user is already signed in
-    const checkUser = async () => {
-      const { data: { session } } = await supabase.auth.getSession();
-      if (session) {
-        navigate('/');
-      }
-    };
-
-    checkUser();
+    // Mock session: if mockUser exists, redirect
+    const stored = localStorage.getItem('mockUser');
+    if (stored) navigate('/');
   }, [navigate]);
 
   const toggleMode = () => {
@@ -50,36 +43,20 @@ export const useAuth = () => {
     
     try {
       if (mode === 'login') {
-        // Handle login
-        const { data, error } = await supabase.auth.signInWithPassword({
+        // Mock login: accept any email/password
+        const mockUser = {
+          id: 'mock-user-id',
           email: formData.email,
-          password: formData.password,
-        });
-
-        if (error) {
-          throw error;
-        }
-
-        toast.success("Successfully logged in!");
+          name: formData.name || formData.email.split('@')[0],
+          username: (formData.name || formData.email.split('@')[0]).toLowerCase().replace(/\s+/g, '_'),
+          avatar_url: null,
+        };
+        localStorage.setItem('mockUser', JSON.stringify(mockUser));
+        toast.success('Logged in');
         navigate('/');
       } else {
-        // Handle registration
-        const { data, error } = await supabase.auth.signUp({
-          email: formData.email,
-          password: formData.password,
-          options: {
-            data: {
-              name: formData.name,
-              username: formData.name.toLowerCase().replace(/\s+/g, '_'),
-            }
-          }
-        });
-
-        if (error) {
-          throw error;
-        }
-
-        toast.success("Account created successfully! Please check your email for verification.");
+        // Mock register
+        toast.success('Account created');
         setMode('login');
       }
     } catch (error: any) {
