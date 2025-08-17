@@ -116,27 +116,13 @@ const Navbar: React.FC = () => {
                       <Link to="/profile">Profile</Link>
                     </DropdownMenuItem>
                     <DropdownMenuSeparator className="bg-eclipse-700" />
-                    {!userName || userName === 'Guest' || userName === 'Guest User' ? (
-                      <DropdownMenuItem className="text-eclipse-200 focus:bg-eclipse-700 focus:text-white cursor-pointer"
-                        onClick={() => {
-                          const mockUser = { id: 'mock-user-id', email: 'guest@example.com', name: 'Guest User', username: 'guest_user', avatar_url: DEFAULT_AVATAR };
-                          localStorage.setItem('mockUser', JSON.stringify(mockUser));
-                          toast.success('Mock sign-in');
-                          window.location.reload();
-                        }}
-                      >
-                        <User className="mr-2 h-4 w-4" />
-                        <span>Mock Sign In</span>
-                      </DropdownMenuItem>
-                    ) : (
-                      <DropdownMenuItem 
-                        onClick={handleLogout}
-                        className="text-eclipse-200 focus:bg-eclipse-700 focus:text-white cursor-pointer"
-                      >
-                        <LogOut className="mr-2 h-4 w-4" />
-                        <span>Log out</span>
-                      </DropdownMenuItem>
-                    )}
+                    <DropdownMenuItem 
+                      onClick={handleLogout}
+                      className="text-eclipse-200 focus:bg-eclipse-700 focus:text-white cursor-pointer"
+                    >
+                      <LogOut className="mr-2 h-4 w-4" />
+                      <span>Log out</span>
+                    </DropdownMenuItem>
                   </DropdownMenuContent>
                 </DropdownMenu>
               </>
@@ -209,26 +195,12 @@ const Navbar: React.FC = () => {
               </Avatar>
               <div className="flex flex-col">
                 <span className="text-sm text-white font-medium">{userName || 'User'}</span>
-                {(!userName || userName === 'Guest' || userName === 'Guest User') ? (
-                  <button 
-                    className="text-left text-xs text-eclipse-400 hover:text-eclipse-300"
-                    onClick={() => {
-                      const mockUser = { id: 'mock-user-id', email: 'guest@example.com', name: 'Guest User', username: 'guest_user', avatar_url: DEFAULT_AVATAR };
-                      localStorage.setItem('mockUser', JSON.stringify(mockUser));
-                      toast.success('Mock sign-in');
-                      window.location.reload();
-                    }}
-                  >
-                    Mock Sign In
-                  </button>
-                ) : (
-                  <button 
-                    className="text-left text-xs text-eclipse-400 hover:text-eclipse-300"
-                    onClick={handleLogout}
-                  >
-                    Log out
-                  </button>
-                )}
+                <button 
+                  className="text-left text-xs text-eclipse-400 hover:text-eclipse-300"
+                  onClick={handleLogout}
+                >
+                  Log out
+                </button>
               </div>
             </div>
           </div>

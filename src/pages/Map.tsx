@@ -2,8 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
-import { MapState, SightingLocation } from '@/types/map';
-import SightingsList from '@/components/map/SightingsList';
+import { MapState, SightingLocation } from '../types/map';
+import SightingsList from '../components/map/SightingsList';
+
+import { sightings } from '../data/sightings';
 
 // Fix for default marker icons in Leaflet
 const DefaultIcon = L.icon({
@@ -28,9 +30,6 @@ const MapPage: React.FC = () => {
   });
   const [isClient, setIsClient] = useState(false);
 
-  // Sample location data for eclipse sightings
-  // Centralized in src/data
-  const { sightings } = require('@/data') as { sightings: SightingLocation[] };
 
   // Fix for SSR (Server-Side Rendering) issues
   useEffect(() => {

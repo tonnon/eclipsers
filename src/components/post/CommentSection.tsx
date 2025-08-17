@@ -133,17 +133,30 @@ const CommentSection: React.FC<CommentSectionProps> = ({ postId }) => {
   );
   const [replyingTo, setReplyingTo] = useState<string | null>(null);
   const [replyContent, setReplyContent] = useState('');
-  
+
+  // Buscar avatar e nome do usuário igual Navbar
+  const DEFAULT_AVATAR = '/guest-avatar.svg';
+  let avatarUrl = DEFAULT_AVATAR;
+  let userName = 'Guest User';
+  const stored = typeof window !== 'undefined' ? localStorage.getItem('mockUser') : null;
+  if (stored) {
+    try {
+      const user = JSON.parse(stored);
+      avatarUrl = user.avatar_url || DEFAULT_AVATAR;
+      userName = user.name || user.username || 'Guest User';
+    } catch {}
+  }
+
   const handleAddComment = () => {
     if (!newComment.trim()) return;
-    
+
     const comment = {
       id: `new-${Date.now()}`,
       postId,
       author: {
         id: 'current-user',
-        name: 'Current User',
-        avatar: 'https://i.pravatar.cc/150?img=1',
+        name: userName,
+        avatar: avatarUrl,
       },
       content: newComment,
       createdAt: new Date(),
@@ -151,7 +164,7 @@ const CommentSection: React.FC<CommentSectionProps> = ({ postId }) => {
       liked: false,
       replies: [],
     };
-    
+
     setComments(prev => [comment, ...prev]);
     setNewComment('');
   };
@@ -236,7 +249,7 @@ const CommentSection: React.FC<CommentSectionProps> = ({ postId }) => {
                     variant="ghost" 
                     size="icon" 
                     className={cn(
-                      "h-6 w-6 text-eclipse-300", 
+                      "h-6 w-6 text-eclipse-300 hover:bg-transparent !bg-transparent", 
                       comment.liked && "text-eclipse-orange"
                     )}
                     onClick={() => handleLikeComment(comment.id)}

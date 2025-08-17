@@ -86,7 +86,7 @@ const PostCard: React.FC<PostCardProps> = ({ post }) => {
             size="icon" 
             onClick={handleLike}
             className={cn(
-              "hover:bg-transparent text-eclipse-300 hover:text-eclipse-orange transition-colors flex items-center", 
+              "hover:bg-transparent !bg-transparent text-eclipse-300 hover:text-eclipse-orange transition-colors flex items-center", 
               liked && "text-eclipse-orange"
             )}
           >
